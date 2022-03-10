@@ -4,6 +4,7 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils import timezone
 
 
 def home_view(request):
@@ -25,8 +26,9 @@ def home_view(request):
 def time_view(request):
     # обратите внимание – здесь HTML шаблона нет,
     # возвращается просто текст
-    current_time = datetime.now().time()
-    msg = f"Текущее время: {current_time}"
+    current_tz = timezone.get_current_timezone_name()
+    current_local_time = timezone.localtime().time()
+    msg = f"Текущее время:<br/>{current_local_time}<br/>Часовой пояс:{current_tz}"
     return HttpResponse(msg)
 
 
