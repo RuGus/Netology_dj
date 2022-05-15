@@ -35,10 +35,11 @@ def students_factory():
 def test_get_single_course(api_url, client, courses_factory):
     courses = courses_factory(_quantity=1)
     course = courses[0]
-    response = client.get(api_url, data={"id": course.id})
+    api_url = api_url + f"{course.id}/"
+    response = client.get(api_url)
     assert response.status_code == 200
     data = response.json()
-    assert data[0]["id"] == course.id
+    assert data["id"] == course.id
 
 
 @pytest.mark.django_db
