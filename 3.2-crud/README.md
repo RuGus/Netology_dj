@@ -1,9 +1,7 @@
-# CRUD
+# Сборка контейнера
 
-Необходимо выполнить и предоставить на проверку задачу:
+``docker build -t my-django ./``
 
-[Склады и товары](./stocks_products)
+# Запуск приложения в контейнере
 
-Работа должна соответствовать принятому [стилю оформления кода](https://github.com/netology-code/codestyle/tree/master/python).
-
-Любые вопросы по решению задач задавайте в чате учебной группы.
+``docker run --name my-django-server -d -p 8000:8000 my-django``
